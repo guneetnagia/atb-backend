@@ -1,0 +1,1 @@
+write all create and insert queries here for all tables in separate file and separate folder for rds and mongo

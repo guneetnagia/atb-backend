@@ -1,0 +1,7 @@
+FROM openjdk:17-alpine
+RUN mkdir -p /task_service
+ENV TZ=America/Los_Angeles
+RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime
+COPY build/libs/atb-1.0.0.jar /atb/atb.jar
+COPY ./dd-java-agent.jar /atb/dd-java-agent.jar
+ENTRYPOINT ["java", "-javaagent:/atb/dd-java-agent.jar", "-jar", "/atb/atb.jar"]
